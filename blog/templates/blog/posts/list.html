@@ -1,0 +1,11 @@
+<h1> Post List </h1>
+{% for post in posts %}
+    <h2>title: {{post.title}}</h2>
+    <img src = '{{ post.thumbnail.url }}' ></img>
+    <p>slug: {{post.slug}}</p>
+    <p>author: {{post.author}}</p>
+    <p>body: {{post.body}}</p>
+    <p>status: {{post.status}}</p>
+    <p>created: {{post.created}}</p>
+    <p>updated: {{post.updated}}</p>
+{% endfor %}
