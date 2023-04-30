@@ -11,4 +11,4 @@ def post_list(request):
 
 def post_detail(request, slug):
     post = Post.objects.get(slug=slug, status="published")
-    return render(request, "blog\posts\detail_post.html", {"post": post})
+    return render(request, "blog\posts\post_detail.html", {"post": post})
