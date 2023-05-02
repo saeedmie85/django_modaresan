@@ -36,7 +36,7 @@
                                                                 <div class="blog-box">
                                                                     <div class="post-media">
                                                                         <a href="tech-single.html" title="">
-                                                                            <img src="upload/tech_menu_01.jpg" alt="" class="img-fluid">
+
                                                                             <div class="hovereffect">
                                                                             </div><!-- end hover -->
                                                                             <span class="menucat">Science</span>
@@ -52,7 +52,7 @@
                                                                 <div class="blog-box">
                                                                     <div class="post-media">
                                                                         <a href="tech-single.html" title="">
-                                                                            <img src="upload/tech_menu_02.jpg" alt="" class="img-fluid">
+                                                                            <img src="{{post.thumbnail.url}}" alt="" class="img-fluid">
                                                                             <div class="hovereffect">
                                                                             </div><!-- end hover -->
                                                                             <span class="menucat">Science</span>
@@ -151,7 +151,9 @@
                                                                 <div class="blog-box">
                                                                     <div class="post-media">
                                                                         <a href="tech-single.html" title="">
-                                                                            <img src="upload/tech_menu_08.jpg" alt="" class="img-fluid">
+                                                                            <h1>{{post.title}}</h1>
+                                                                            <img src="{{post.thumbnail.url}}" alt="" class="img-fluid">
+                                                                           
                                                                             <div class="hovereffect">
                                                                             </div><!-- end hover -->
                                                                             <span class="menucat">Technology</span>
@@ -420,6 +422,11 @@
                                     <small><a href="tech-single.html" title="">{{post.jalali_publish}}</a></small>
                                     <small><a href="tech-author.html" title="">{{post.author.get_full_name}}</a></small>
                                     <small><a href="#" title=""><i class="fa fa-eye"></i> 2344</a></small>
+                                    <small>
+                                        {% for cat in post.category.all %}
+                                        <a href="{% url 'blog:category_list' cat.slug %}" title="">#{{cat.title}}</a>
+                                        {% endfor %}
+                                    </small>
                                 </div><!-- end meta -->
 
                                 <div class="post-sharing">
@@ -432,7 +439,10 @@
                             </div><!-- end title -->
 
                             <div class="single-post-media">
-                                <img src="upload/tech_menu_08.jpg" alt="" class="img-fluid">
+                                {% if post.thumbnail %}
+                                <img src="{{post.thumbnail.url}}" alt="" class="img-fluid">
+                                {% endif %}
+                                
                             </div><!-- end media -->
 
                             <div class="blog-content">  

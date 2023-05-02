@@ -7,10 +7,22 @@ from .models import Post, Category
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ["title", "slug", "author", "jalali_publish", "status"]
+    list_display = [
+        "title",
+        "slug",
+        "get_category",
+        "author",
+        "jalali_publish",
+        "status",
+    ]
     list_filter = ["publish", "status"]
     search_fields = ["title", "body"]
     prepopulated_fields = {"slug": ["title"]}
+
+    def get_category(self, obj):
+        return "، ".join([cat.title for cat in obj.category.all()])
+
+    get_category.short_description = "دسته بندی"
 
 
 @admin.register(Category)
