@@ -6,12 +6,20 @@ from .models import Post, Category
 
 def post_list(request):
     posts = Post.objects.filter(status="published")
-    return render(request, "blog\posts\home.html", {"posts": posts})
+    categories = Category.objects.filter(status=True)
+    return render(request, "blog\posts\home.html", 
+                    {"posts": posts,
+                    'categories':categories
+                    }
+    )
 
 
 def post_detail(request, slug):
     post = Post.objects.get(slug=slug, status="published")
-    return render(request, "blog\posts\post_detail.html", {"post": post})
+    categories = Category.objects.filter(status=True)
+    return render(request, "blog\posts\post_detail.html", {"post": post,
+    'categories':categories}
+    )
 
 
 def category_list(request, slug):

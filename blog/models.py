@@ -23,7 +23,7 @@ class Category(models.Model):
 class Post(models.Model):
     STATUS_CHOICES = (("published", "منتشر شده"), ("draft", "پیش نویس"))
     title = models.CharField(max_length=200, verbose_name="عنوان")
-    category = models.ManyToManyField(Category, verbose_name="دسته بندی")
+    category = models.ManyToManyField(Category , verbose_name="دسته بندی")
     thumbnail = models.ImageField(
         upload_to="images", null=True, blank=True, verbose_name="تصویر"
     )
