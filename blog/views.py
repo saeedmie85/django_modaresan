@@ -1,25 +1,23 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from .models import Post, Category
 
 # Create your views here.
 
 
-def post_list(request):
+def post_list(request, number = 1):
     posts = Post.objects.filter(status="published")
-    categories = Category.objects.filter(status=True)
+    paginator = Paginator(posts, 3)
+    posts = paginator.get_page(number)
     return render(request, "blog\posts\home.html", 
-                    {"posts": posts,
-                    'categories':categories
-                    }
+                    {"posts": posts}
     )
 
 
 def post_detail(request, slug):
     post = Post.objects.get(slug=slug, status="published")
-    categories = Category.objects.filter(status=True)
-    return render(request, "blog\posts\post_detail.html", {"post": post,
-    'categories':categories}
-    )
+    
+    return render(request, "blog\posts\post_detail.html", {"post": post})
 
 
 def category_list(request, slug):
