@@ -23,11 +23,11 @@ class Category(models.Model):
 class Post(models.Model):
     STATUS_CHOICES = (("published", "منتشر شده"), ("draft", "پیش نویس"))
     title = models.CharField(max_length=200, verbose_name="عنوان")
-    category = models.ManyToManyField(Category , verbose_name="دسته بندی")
+    category = models.ManyToManyField(Category, verbose_name="دسته بندی")
     thumbnail = models.ImageField(
         upload_to="images", null=True, blank=True, verbose_name="تصویر"
     )
-    slug = models.SlugField(max_length=250, verbose_name="آدرس")
+    slug = models.SlugField(max_length=250, allow_unicode=True, verbose_name="آدرس")
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_post", verbose_name="نویسنده"
     )
@@ -56,5 +56,5 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    #def get_category(self):
+    # def get_category(self):
     #    return " - ".join([cat.title for cat in self.category.all()])
