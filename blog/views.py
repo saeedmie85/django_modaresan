@@ -6,8 +6,8 @@ from .models import Post, Category
 
 
 def post_list(request, number = 1):
-    posts = Post.objects.filter(status="published")
-    paginator = Paginator(posts, 3)
+    posts_list = Post.objects.filter(status="published")
+    paginator = Paginator(posts_list, 3)
     posts = paginator.get_page(number)
     return render(request, "blog\posts\home.html", 
                     {"posts": posts}
