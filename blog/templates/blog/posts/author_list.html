@@ -1,0 +1,21 @@
+{% extends 'blog\posts\list.html' %}
+{% block title %}لیست پست ها {{author.get_full_name}}{% endblock title %}
+
+{% block previous_page_number %}
+    href="{% url 'blog:author_list' author.username posts.previous_page_number %}"
+{% endblock previous_page_number %}    
+
+{% block active_page_link %}
+    href="{% url 'blog:author_list' author.username i %}"
+{% endblock active_page_link %}
+
+{% block page_link %}
+    href="{% url 'blog:author_list' author.username i %}"
+{% endblock page_link %}
+
+{% block next_page_number %}
+    href="{% url 'blog:author_list' author.username posts.next_page_number %}"
+{% endblock next_page_number %}
+
+
+
