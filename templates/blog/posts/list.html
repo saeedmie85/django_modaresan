@@ -26,7 +26,9 @@
                 <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> 1114</a></small>
                 <small>
                 {% for cat in post.category.all %}
-                <a href="{% url 'blog:category_list' cat.slug %}" title="">#{{cat.title}}</a>
+                    {% if cat.status %}
+                        <a href="{% url 'blog:category_list' cat.slug %}" title="">#{{cat.title}}</a>
+                    {% endif %}
                 {% endfor %}
                 </small>
             </div><!-- end meta -->

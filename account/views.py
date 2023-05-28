@@ -11,5 +11,12 @@ from blog.models import Post
 
 
 class PostList(LoginRequiredMixin, ListView):
-    model = Post
+    # model = Post
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_superuser:
+            return Post.objects.all()
+        else:
+            return Post.objects.filter(author=user)
+
     template_name = "registration\home.html"
