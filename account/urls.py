@@ -5,7 +5,7 @@
 
 from django.contrib.auth import views
 from django.urls import path
-from .views import PostList
+from .views import PostList, PostCreate
 
 app_name = "account"
 
@@ -41,5 +41,6 @@ urlpatterns = [
 
 urlpatterns += [
     # path("", home, name="home"),
-    path("", PostList.as_view(), name="post_list")
+    path("", PostList.as_view(), name="post_list"),
+    path("post_create", PostCreate.as_view(), name="post_create"),
 ]
