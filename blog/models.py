@@ -48,6 +48,11 @@ class Post(models.Model):
 
     jalali_publish.short_description = "تاریخ انتشار"
 
+    def get_category(self):
+        return "، ".join([cat.title for cat in self.category.all()])
+
+    get_category.short_description = "دسته بندی"
+
     class Meta:
         ordering = ("status", "-publish")
         verbose_name = "پست"
