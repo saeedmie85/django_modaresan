@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     "extensions",
     "account.apps.AccountConfig",
+    "crispy_forms",
+    "crispy_bootstrap3",
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,5 @@ MEDIA_ROOT = BASE_DIR / "media"
 LOGIN_REDIRECT_URL = "account:home"
 LOGIN_URL = "account:login"
 STATICFILES_DIRS = [BASE_DIR / "static"]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap3"
+CRISPY_TEMPLATE_PACK = "bootstrap3"

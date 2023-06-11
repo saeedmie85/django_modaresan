@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .mixins import FieldMixin, FormValidMixin
 from blog.models import Post
 
 # Create your views here.
@@ -23,15 +24,7 @@ class PostList(LoginRequiredMixin, ListView):
     template_name = "registration\home.html"
 
 
-class PostCreate(LoginRequiredMixin, CreateView):
+class PostCreate(LoginRequiredMixin, FieldMixin, FormValidMixin, CreateView):
     model = Post
-    fields = [
-        "title",
-        "slug",
-        "category",
-        "thumbnail",
-        "body",
-        "status",
-    ]
     template_name = "registration\post_create_update.html"
     success_url = reverse_lazy("account:post_list")

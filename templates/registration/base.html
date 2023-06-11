@@ -350,7 +350,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> ایجاد مقاله</a></li>
+            <li class="active"><a href="{% url 'account:post_list' %}"><i class="fa fa-circle-o"></i> لیست مقالات</a></li>
+            <li class="active"><a href="{% url 'account:post_create' %}"><i class="fa fa-edit"></i> ایجاد مقاله</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> داشبرد دوم</a></li>
           </ul>
         </li>
@@ -521,7 +522,7 @@
     <section class="content-header">
       <h1>
         داشبرد
-        <small>کنترل پنل</small>
+        <small>{% block subtitle %}{% endblock subtitle %}</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> خانه</a></li>
@@ -530,7 +531,9 @@
     </section>
 
     <!-- Main content -->
+    <section class="content">
       {% block main %}{% endblock main %}
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

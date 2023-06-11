@@ -1,1 +1,34 @@
-hi
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} ایجاد مقاله{% endblock title %}
+{% block subtitle %} ایجاد مقاله{% endblock subtitle %}
+{% block main %}
+<form method = "post" enctype = "multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+          {{ form.title|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6 mb-0">
+          {{ form.slug|as_crispy_field }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6 mb-0">
+          {{ form.category|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6 mb-0">
+          {{ form.thumbnail|as_crispy_field }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 mb-0">
+          {{ form.body|as_crispy_field }}
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <button type = 'submit' class = 'btn bg-purple btn-flat margin'>ارسال</button>
+    </div>
+</form>
+{% endblock main %}
