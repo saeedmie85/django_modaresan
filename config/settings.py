@@ -136,3 +136,4 @@ LOGIN_URL = "account:login"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap3"
 CRISPY_TEMPLATE_PACK = "bootstrap3"
+AUTH_USER_MODEL = "account.User"

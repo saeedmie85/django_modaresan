@@ -14,8 +14,9 @@ class PostAdmin(admin.ModelAdmin):
         "author",
         "jalali_publish",
         "status",
+        "is_special",
     ]
-    list_filter = ["publish", "status"]
+    list_filter = ["publish", "status", "is_special"]
     search_fields = ["title", "body"]
     prepopulated_fields = {"slug": ["title"]}
 

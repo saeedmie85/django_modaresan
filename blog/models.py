@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+from account.models import User
 from extensions.utils import jalali_convertor
 
 
@@ -32,6 +32,7 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, related_name="blog_post", verbose_name="نویسنده"
     )
     body = models.TextField(null=True, blank=True, verbose_name="محتوی")
+    is_special = models.BooleanField(default=False, verbose_name="مقاله ویژه")
     status = models.CharField(
         max_length=15, choices=STATUS_CHOICES, default="draft", verbose_name="وضعیت"
     )

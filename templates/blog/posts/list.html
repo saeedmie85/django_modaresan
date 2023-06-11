@@ -20,7 +20,9 @@
             <div class="blog-meta big-meta col-md-8">
                 <h4><a href="{% url 'blog:post_detail' post.slug  %}" title="">{{post.title}}</a></h4>
                 <p>{{post.body|truncatewords:30}}</p>
-                <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>
+                {% if post.is_special %}
+                    <small class="firstsmall"><a class="bg-orange" href="tech-category-01.html" title="">ویژه</a></small>
+                {% endif %}
                 <small><a href="tech-single.html" title="">{{post.jalali_publish}}</a></small>
                 <small><a href="{% url 'blog:author_list' post.author.username %}" title=""> نویسنده: {{post.author.get_full_name}} </a></small>
                 <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> 1114</a></small>
