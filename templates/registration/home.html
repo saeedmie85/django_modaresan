@@ -31,7 +31,16 @@
             </tr>
             {% for obj in object_list %}
                 <tr>
+                  {% if obj.status == "draft" or  user.is_superuser %}
+                  <td>
+                    <a href = "{% url 'account:post_update' obj.pk %}">
+                      {{obj.title}}
+                    </a>
+                  </td>
+                  {% else %}
                     <td> {{obj.title}} </td>
+                  {% endif %}
+                    
                     <td> {{obj.author.get_full_name}} </td>
                     <td> {{obj.get_category}} </td>
                     
@@ -40,7 +49,17 @@
                         {% else %}
                         {{obj.jalali_publish}}
                         {% endif %}  </td>
-                    <td> {{obj.status}} </td>
+                    <td>
+                      {% if obj.status == 'draft' %}
+                      <button type="button" class="btn bg-orange btn-xs margin">پیشنویس</button>
+                      {% else %}
+                      <button type="button" class="btn btn-primary btn-xs margin">منتشر شده</button>
+                      {% endif %}
+                      
+                      {% if user.is_superuser %}
+                      <a type="button" href = "{% url 'account:post_delete' obj.pk %}" class="btn btn-danger btn-xs margin">حذف</a>
+                      {% endif %}
+                      </td>
 
                 </tr>
             {% endfor %}

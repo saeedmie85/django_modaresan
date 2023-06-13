@@ -1,4 +1,6 @@
 from django.http import Http404
+from blog.models import Post
+from django.shortcuts import get_object_or_404
 
 
 class FieldMixin:
@@ -34,3 +36,12 @@ class FormValidMixin:
             self.obj.author = self.request.user
             self.obj.status = "draft"
         return super().form_valid(form)
+
+
+class AuthorAccessMixin:
+    def dispatch(self, request, pk, *args, **kwargs):
+        post = get_object_or_404(Post, pk=pk)
+        if request.user.is_superuser or post.author == request.user:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            raise Http404("دسترسی غیر مجاز")
