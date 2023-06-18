@@ -15,3 +15,15 @@ urlpatterns = [
     path("author/<slug:user_name>", author_list, name="author_list"),
     path("author/<slug:user_name>/page/<int:number>", author_list, name="author_list"),
 ]
+
+from django.urls import re_path
+from . import views
+
+urlpatterns += [
+    re_path(r"^signup/$", views.signup, name="signup"),
+    re_path(
+        r"^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$",
+        views.activate,
+        name="activate",
+    ),
+]

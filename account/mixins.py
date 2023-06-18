@@ -8,6 +8,7 @@ class FieldMixin:
         if self.request.user.is_superuser:
             self.fields = [
                 "title",
+                "is_special",
                 "slug",
                 "category",
                 "thumbnail",
@@ -18,6 +19,7 @@ class FieldMixin:
         else:
             self.fields = [
                 "title",
+                "is_special",
                 "slug",
                 "category",
                 "thumbnail",

@@ -55,11 +55,13 @@
                       {% else %}
                       <button type="button" class="btn btn-primary btn-xs margin">منتشر شده</button>
                       {% endif %}
-                      
+                      {% if obj.is_special %}
+                      <button type="button" class="btn bg-yellow btn-xs margin">ویژه</button>
+                      {% endif %}
                       {% if user.is_superuser %}
                       <a type="button" href = "{% url 'account:post_delete' obj.pk %}" class="btn btn-danger btn-xs margin">حذف</a>
                       {% endif %}
-                      </td>
+                    </td>
 
                 </tr>
             {% endfor %}

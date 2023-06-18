@@ -46,3 +46,6 @@ urlpatterns += [
     path("post_update/<int:pk>", PostUpdate.as_view(), name="post_update"),
     path("post_delete/<int:pk>", PostDelete.as_view(), name="post_delete"),
 ]
+
+
+
