@@ -1,7 +1,7 @@
 {% extends 'blog\posts\base.html' %}
 {% block title %} ثبت نام کاربر جدید{% endblock title %}
-{% block subtitle %}ثبت نام کاربر جدید{% endblock subtitle %}
-{% block main %}
+
+{% block content %}
   <form method="post">
     {% csrf_token %}
       {% for field in form %}
